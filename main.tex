@@ -1,0 +1,140 @@
+\documentclass[aspectratio=43,usenames,dvipsnames,t]{beamer}
+
+\input{style}
+
+% ---------- Title ----------
+
+\title[A showcase of my new beamer theme] % (optional)
+{A showcase of my new beamer theme}
+%\subtitle{}
+\author[Sarah Winter] % (optional)
+{Sarah Winter}
+\institute[ULB] % (optional)
+{
+  Université libre de Bruxelles (ULB), Brussels, Belgium
+}
+\date[Seminar, June, 2020] % (optional)
+{
+  Computer Science Seminar\\
+  June, 2020
+}
+
+% ---------- Document ----------
+
+\begin{document}
+
+% ---------- Titleframe ----------
+
+\begin{frame}[plain]
+ \titlepage
+\end{frame}
+
+
+% ---------- Frames ----------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[label=firstframe]
+\frametitle{The \textbf{Grapefruit} Theme}
+
+This is the begining of the slide with some \alert{alerted text} and some \emph{emphasized text}.
+
+\begin{theorem}
+  This is a theorem.
+\end{theorem}
+
+\begin{theorem}[W.'20]
+  This is also a theorem. It has more than one line of text. The text is justified.
+\end{theorem}
+
+\begin{example}
+  This is a nice example.
+  And this is \emph{important}.
+\end{example}
+
+Some text below the example.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[label=secondframe]
+\frametitle{The \textbf{Grapefruit} Theme}
+
+Let us start with a list, we have
+\begin{itemize}
+  \item first item,
+  \itemaccent second item in accent color,
+  \item third item in regular color.
+\end{itemize}
+
+\bigskip
+
+We can also do enumerated lists.
+\begin{enumerate}
+  \item Start,
+  \item \begin{enumerate}
+    \item a subitem,
+    \item another one,
+    \enumaccent one in accent color,
+  \end{enumerate}
+  \item the end.
+\end{enumerate}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[label=thirdframe]
+\frametitle{The \textbf{Grapefruit} Theme}
+
+And of course descriptions, look at
+\begin{description}
+  \descitem{one} some text,
+  \descitem{two} some more,
+  \descitem{three} even more text,
+  \descitemaccent{four} in accent color, and
+  \descitemaccent{five} another one in accent color.
+\end{description}
+
+\begin{shadebox}
+  We have a nice box with a gray shade and some \alert{alerted text}, and some \emph{emphasized text}.
+\end{shadebox}
+
+\begin{accentbox}
+  We also have a box with an accentcolor shade that contains some \alert{alerted text}, and some \emph{emphasized text}.
+\end{accentbox}
+ 
+ \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% color changes %%%%%%%
+\colorlet{frametitlecolor}{darkgray}
+\colorlet{maincolor}{Green}
+\colorlet{accentcolor}{myblue}
+\colorlet{thmcolor}{myred}
+\colorlet{examplecolor}{myorange}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Color variants}
+
+And now the same slides with other color variations.
+We have as most important colors
+\begin{itemize}
+ \item a frame title and footer color,
+ \item a main color, used for lists, and \alert{alerted text},
+ \item an accent color, used for \emph{emphasized text},
+ \item a theorem label color, and an example color.
+\end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% slides with color changes %%%%%%%
+\againframe{firstframe}
+\againframe{secondframe}
+\againframe{thirdframe}
+
+
+\end{document}

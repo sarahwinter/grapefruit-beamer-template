@@ -1,0 +1,233 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} % times
+\usepackage[english]{babel}
+
+\usepackage{ragged2e} %to justify text
+
+\usepackage{xparse}
+\usepackage{amsmath,amssymb,wasysym}
+\usepackage{pgfpages}
+\usepackage[]{xcolor}
+\usepackage{framed}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,automata,trees,backgrounds,arrows,fit,positioning}
+%\tikzstyle{initial}+=[initial text=]
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+
+  \tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+  }
+
+
+
+% --------- STYLE -------------------
+
+\newenvironment{variableblock}[3]{%
+  \setbeamercolor{block body}{#2}
+  \setbeamercolor{block title}{#3}
+  \begin{block}{#1}}{\end{block}}
+
+\usetheme{default} %Madrid,Copenhagen,Warsaw,CambridgeUS,Boadilla
+\usecolortheme{default} %dolphin,beaver,rose,orchid
+
+% \usefonttheme{professionalfonts} %structurebold
+% \useoutertheme{wuerzburg}
+% \useinnertheme{rectangles}
+
+% \renewcommand\mathfamilydefault{\rmdefault} %anstellt von mathserif
+\let\Tiny=\tiny
+
+
+% ---------- Colors --------
+\definecolor{darkgray}{rgb}{0.33, 0.33, 0.33}
+
+\definecolor{myred}{RGB}{255,15,0} % my red
+\definecolor{myorange}{RGB}{255,147,0} % my orange
+\definecolor{myblue}{rgb}{0.23,0.4,0.7} % my blue
+
+\definecolor{frametitlecolor}{named}{darkgray}
+\definecolor{maincolor}{named}{OrangeRed} %OrangeRed
+\definecolor{accentcolor}{named}{OrangeRed} %RedOrange
+\definecolor{accentcolor2}{named}{myorange} % never used
+
+\definecolor{thmcolor}{named}{OrangeRed}
+\definecolor{examplecolor}{named}{myorange}
+
+
+% ---------- Beamer Fonts --------
+\usefonttheme{serif}
+\setbeamerfont{frametitle}{shape=\mdseries,family=\sffamily}
+\setbeamerfont{framesubtitle}{shape=\mdseries,family=\sffamily}
+\setbeamerfont{frametitle continuation}{shape=\mdseries,family=\sffamily}
+\setbeamerfont{footline}{family=\sffamily}
+\setbeamerfont{footnote mark}{family=\sffamily}
+\setbeamerfont{section in toc}{family=\sffamily}
+\setbeamerfont{alerted text}{shape=\bfseries,family=\sffamily}
+\setbeamerfont{title}{family=\sffamily}
+\setbeamerfont{enumerate item}{shape=\bfseries,family=\sffamily}
+\setbeamerfont{enumerate subitem}{shape=\bfseries,family=\sffamily}
+\setbeamerfont{page number in head}{shape=\bfseries,family=\sffamily}
+\setbeamerfont{page number in foot}{shape=\bfseries,family=\sffamily}
+%\setbeamerfont{}{series=\rmseries}
+
+
+% ---------- Beamer Colors --------
+\setbeamercolor{frametitle}{fg=frametitlecolor} 
+\setbeamercolor{title}{fg=maincolor}
+\setbeamercolor{item}{parent=title}
+\setbeamercolor{section in toc}{parent=title}
+\setbeamercolor{footline}{fg=frametitlecolor}
+\setbeamercolor{alerted text}{fg=maincolor}
+
+% \setbeamertemplate{blocks}[rounded][shadow=false]
+
+%  \setbeamertemplate{frametitle}{\vspace*{-1pt}{\insertframetitle\par} 
+%   \ifx\insertframesubtitle\@empty\else
+%   \vspace*{-1pt}%
+%   \insertframesubtitle\par\fi
+%   \vspace*{-13pt}
+%     \hspace*{0pt}\rule{\textwidth}{0.25pt}
+%     \vskip-5pt
+%     }
+% \setbeamersize{text margin left=2ex}
+
+% ---------- Beamer Footer --------
+\setbeamertemplate{footline}
+{
+\hbox{\begin{beamercolorbox}[wd=1.0\paperwidth,ht=2.25ex,dp=1ex]{frametitlecolor}%title in head/foot
+\usebeamerfont{footerFont}{
+%\vspace*{-0.5ex}
+\hspace*{2ex}
+{\hspace*{10ex} \insertshorttitle\ -- \insertshortauthor \hfill \insertshortdate\ \hfill \insertframenumber\ of \inserttotalframenumber}}%/\inserttotalframenumber
+\hspace*{2ex}
+\end{beamercolorbox}%
+}%
+\vskip0pt%
+}%
+
+% ---------- Beamer Navbar --------
+\setbeamertemplate{navigation symbols}{}
+
+% ---------- Beamer TOC --------
+\AtBeginSection[]
+{
+ \begin{frame}<beamer>
+ \frametitle{Outline}
+ \tableofcontents[currentsection,currentsubsection,hideothersubsections,subsectionstyle=show/shaded]
+\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+ \begin{frame}<beamer>
+ \frametitle{Outline}
+ \tableofcontents[currentsection,currentsubsection,hideothersubsections,subsectionstyle=show/shaded]
+\end{frame}
+}
+
+% ---------- Highlights and Alerts --------
+\newcommand{\alertsf}[1]{{\sffamily\color{maincolor}#1}}
+\newcommand{\alertrm}[1]{{\rmfamily\color{maincolor}#1}}
+\newcommand{\alertaccentboldsf}[1]{{\bfseries\sffamily\color{accentcolor}#1}}
+\newcommand{\alertaccentboldrm}[1]{{\bfseries\rmfamily\color{accentcolor}#1}}
+\newcommand{\alertaccentsf}[1]{{\sffamily\color{accentcolor}#1}}
+\newcommand{\alertaccentrm}[1]{{\rmfamily\color{accentcolor}#1}}
+\newcommand{\boldsf}[1]{{\bfseries\sffamily#1}}
+\newcommand{\boldrm}[1]{{\bfseries\rmfamily#1}}
+
+\newcommand{\descitem}[1]{\item[\bfseries\sffamily#1]}
+\newcommand{\descitemaccent}[1]{\item[\bfseries\sffamily\color{accentcolor}#1]}
+\newcommand{\itemaccent}{
+  \usebeamercolor{itemize item}%
+  \colorlet{fgColor}{fg}%
+  \colorlet{bgColor}{bg}%
+
+  \usebeamercolor{itemize subitem}%
+  \colorlet{fgColor2}{fg}%
+  \colorlet{bgColor2}{bg}%
+
+\setbeamercolor{itemize item}{fg=accentcolor}
+\setbeamercolor{itemize subitem}{fg=accentcolor}
+\item
+\setbeamercolor{itemize item}{fg=fgColor}
+\setbeamercolor{itemize subitem}{fg=fgColor2}
+}
+
+\newcommand{\enumaccent}{
+  \usebeamercolor{enumerate item}%
+  \colorlet{fgColor}{fg}%
+  \colorlet{bgColor}{bg}%
+
+  \usebeamercolor{enumerate subitem}%
+  \colorlet{fgColor2}{fg}%
+  \colorlet{bgColor2}{bg}%
+
+\setbeamercolor{enumerate item}{fg=accentcolor}
+\setbeamercolor{enumerate subitem}{fg=accentcolor}
+\item
+\setbeamercolor{enumerate item}{fg=fgColor}
+\setbeamercolor{enumerate subitem}{fg=fgColor}
+}
+
+\renewcommand{\emph}[1]{\alertaccentboldsf{#1}}
+\newcommand{\accentc}[1]{{\color{accentcolor}#1}}
+
+
+
+% boxes
+\newenvironment{shadebox}
+{
+  \colorlet{shadecolor}{black!10}
+  \begin{shaded}
+}
+{\end{shaded}}
+
+\newenvironment{accentbox}
+{
+  \colorlet{shadecolor}{accentcolor!20}
+  \begin{shaded}
+}
+{\end{shaded}}
+
+% example box
+
+\renewenvironment{example}
+{
+  \colorlet{shadecolor}{examplecolor!20}
+  \begin{shaded}
+    {\bfseries\sffamily\color{examplecolor}Example.}
+}
+{\end{shaded}}
+
+% \NewDocumentCommand{\ex}{m}{
+%   \colorlet{shadecolor}{accentcolor!20}
+%   \begin{shaded}
+%     \alertaccentboldsf{Example.} #1  
+%   \end{shaded}
+% }
+
+
+% theorem box
+
+\RenewDocumentEnvironment{theorem}{o}
+ {%
+  \colorlet{shadecolor}{black!10}
+  \begin{shaded}\justifying
+     % <code>
+    \IfNoValueTF{#1}
+    {{\bfseries\sffamily\color{thmcolor}Theorem.}\ }
+    {{\bfseries\sffamily\color{thmcolor}Theorem\ {\mdseries(#1)}.}\ }%
+    % <code>
+ }
+ {
+  \end{shaded}
+ }
+
